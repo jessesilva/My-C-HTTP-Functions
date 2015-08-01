@@ -534,11 +534,7 @@ int main(int argc, char **argv) {
 			if (request_test->status == TRUE)
 				say("Request: %d\nData length: %d\n\n", a, request_test->length);
 			
-			request_test->status = FALSE;
-			request_test->length = 0;
-			if (request_test->content)
-				free(request_test->content);
-			free(request_test);
+			http_request_free(request_test);
 		} else {
 			say("Error alloc memory - Tests.\n");
 			exit(EXIT_FAILURE);
